@@ -14,12 +14,41 @@
 	],
 	"main": "./extension.js",
 	"contributes": {
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "translate",
+					"title": "Sidebar Translate",
+					"icon": "/icon/sidebar.svg"
+				}
+			]
+		},
 		"commands": [
 			{
 				"command": "sidebar-translate.helloWorld",
 				"title": "Hello World"
+			},
+			{
+				"command":"sbts.search",
+				"title": "Search",
+				"icon":"/icon/search.svg"
 			}
-		]
+		],
+		"views": {
+			"translate": [
+				{
+					"id": "sbts",
+					"name": "",
+					"contextualTitle": "Sidebar translate"
+				}
+			]
+		},
+		"menu" : {
+			"view/title":{
+				"command":"sbts.search",
+				"when":"view == sbts"
+			}
+		}
 	},
 	"scripts": {
 		"lint": "eslint .",
