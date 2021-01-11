@@ -10,7 +10,8 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:sidebar-translate.helloWorld"
+		"onCommand:sidebar-translate.helloWorld",
+		"onView:sbts"
 	],
 	"main": "./extension.js",
 	"contributes": {
@@ -19,34 +20,32 @@
 				{
 					"id": "translate",
 					"title": "Sidebar Translate",
-					"icon": "/icon/sidebar.svg"
+					"icon": "icon/sidebar.svg"
+				}
+			]
+		},
+		"views": {
+			"translate": [
+				{
+					"id": "sbts",
+					"name": "translate",
+					"contextualTitle": "Sidebar translate"
 				}
 			]
 		},
 		"commands": [
 			{
-				"command": "sidebar-translate.helloWorld",
-				"title": "Hello World"
-			},
-			{
-				"command":"sbts.search",
-				"title": "Search",
-				"icon":"/icon/search.svg"
+				"command": "sbts.helloWorld",
+				"title": "Hello World",
+				"icon":"icon/search.svg"
+
 			}
 		],
-		"views": {
-			"translate": [
-				{
-					"id": "sbts",
-					"name": "",
-					"contextualTitle": "Sidebar translate"
-				}
-			]
-		},
 		"menu" : {
 			"view/title":{
-				"command":"sbts.search",
-				"when":"view == sbts"
+				"command":"sbts.helloworld",
+				"when":"view == sbts",
+				"group": "navigation"
 			}
 		}
 	},
