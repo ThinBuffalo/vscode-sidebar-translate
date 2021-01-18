@@ -18,51 +18,92 @@
 		"viewsContainers": {
 			"activitybar": [
 				{
-					"id": "translate",
+					"id": "sidebar",
 					"title": "Sidebar Translate",
-					"icon": "icon/sidebar.svg"
+					"icon": "icon/dep.svg"
 				}
 			]
 		},
 		"views": {
-			"translate": [
+			"sidebar": [
 				{
 					"id": "sbts",
-					"name": "translate",
+					"name": "Sidebar Translate",
+					"icon": "icon/dep.svg",
 					"contextualTitle": "Sidebar translate"
 				}
 			]
 		},
 		"commands": [
 			{
-				"command": "sbts.helloWorld",
-				"title": "Hello World",
-				"icon":"icon/search.svg"
-
+				"command": "sbts.refreshEntry",
+				"title": "Refresh",
+				"icon": {
+					"light": "resources/light/refresh.svg",
+					"dark": "resources/dark/refresh.svg"
+				}
+			},
+			{
+				"command": "sbts.addEntry",
+				"title": "Add"
+			},
+			{
+				"command": "sbts.editEntry",
+				"title": "Edit",
+				"icon": {
+					"light": "resources/light/edit.svg",
+					"dark": "resources/dark/edit.svg"
+				}
+			},
+			{
+				"command": "sbts.deleteEntry",
+				"title": "Delete"
 			}
 		],
-		"menu" : {
-			"view/title":{
-				"command":"sbts.helloworld",
-				"when":"view == sbts",
-				"group": "navigation"
-			}
+		"menu": {
+			"view/title": [
+				{
+					"command": "sbts.refreshEntry",
+					"when": "view == sbts",
+					"group": "navigation"
+				},
+				{
+					"command": "sbts.addEntry",
+					"when": "view == sbts"
+				},
+				{
+					"command": "jsonOutline.refresh",
+					"when": "view == jsonOutline",
+					"group": "navigation"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "sbts.editEntry",
+					"when": "view == sbts && viewItem == dependency",
+					"group": "inline"
+				},
+				{
+					"command": "sbts.deleteEntry",
+					"when": "view == sbts && viewItem == dependency"
+				}
+			]
+		},
+		"scripts": {
+			"lint": "eslint .",
+			"pretest": "npm run lint",
+			"test": "node ./test/runTest.js"
+		},
+		"devDependencies": {
+			"@types/vscode": "^1.51.0",
+			"@types/glob": "^7.1.3",
+			"@types/mocha": "^8.0.0",
+			"@types/node": "^12.11.7",
+			"eslint": "^7.9.0",
+			"glob": "^7.1.6",
+			"mocha": "^8.1.3",
+			"typescript": "^4.0.2",
+			"vscode-test": "^1.4.0"
 		}
-	},
-	"scripts": {
-		"lint": "eslint .",
-		"pretest": "npm run lint",
-		"test": "node ./test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/vscode": "^1.51.0",
-		"@types/glob": "^7.1.3",
-		"@types/mocha": "^8.0.0",
-		"@types/node": "^12.11.7",
-		"eslint": "^7.9.0",
-		"glob": "^7.1.6",
-		"mocha": "^8.1.3",
-		"typescript": "^4.0.2",
-		"vscode-test": "^1.4.0"
 	}
 }
