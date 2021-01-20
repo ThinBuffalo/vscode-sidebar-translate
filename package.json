@@ -9,11 +9,6 @@
 	"categories": [
 		"Other"
 	],
-	"activationEvents": [
-		"onCommand:untitle.helloWorld",
-		"onView:treeView-item",
-		"onCommand:itemClick"
-	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
@@ -42,6 +37,11 @@
             }
         ]
 	},
+	"activationEvents": [
+		"onCommand:untitle.helloWorld",
+		"onView:treeView-item",
+		"onCommand:itemClick"
+	],
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",

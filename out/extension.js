@@ -14,7 +14,9 @@ function activate(context) {
     context.subscriptions.push(vscode.commands.registerCommand('extension.helloWorld', () => {
         vscode.window.showInformationMessage('Hello World!');
     }));
-    treeview_1.TreeViewProvider.initTreeViewItem();
+    // TreeViewProvider.initTreeViewItem();
+    const treeViewProvider = new treeview_1.TreeViewProvider();
+    vscode.window.registerTreeDataProvider('treeView-item', treeViewProvider);
     context.subscriptions.push(vscode.commands.registerCommand('itemClick', (label) => {
         vscode.window.showInformationMessage(label);
     }));

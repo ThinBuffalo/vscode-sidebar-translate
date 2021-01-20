@@ -12,7 +12,9 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(vscode.commands.registerCommand('extension.helloWorld', () => {
 		vscode.window.showInformationMessage('Hello World!');
 	}));
-	TreeViewProvider.initTreeViewItem();
+	// TreeViewProvider.initTreeViewItem();
+	const treeViewProvider = new TreeViewProvider();
+	vscode.window.registerTreeDataProvider('treeView-item', treeViewProvider);
 	context.subscriptions.push(vscode.commands.registerCommand('itemClick', (label) => {
 		vscode.window.showInformationMessage(label);
 	}));

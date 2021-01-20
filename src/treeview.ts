@@ -28,7 +28,7 @@ export class TreeViewProvider implements TreeDataProvider<TreeItemNode>{
     getTreeItem(element: TreeItemNode): TreeItem | Thenable<TreeItem> {
         return element;
     }
-    getChildren(element?: TreeItemNode): ProviderResult<TreeItemNode[]> {
+    getChildren(element?: TreeItemNode|undefined): ProviderResult<TreeItemNode[]> {
         return ['result1'].map(
 
             item => new TreeItemNode(
@@ -41,7 +41,6 @@ export class TreeViewProvider implements TreeDataProvider<TreeItemNode>{
 
         // 实例化 TreeViewProvider
         const treeViewProvider = new TreeViewProvider();
-
         // registerTreeDataProvider：注册树视图
         // 你可以类比 registerCommand(上面注册 Hello World)
         window.registerTreeDataProvider('treeView-item', treeViewProvider);
